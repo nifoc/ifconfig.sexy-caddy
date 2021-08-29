@@ -1,0 +1,59 @@
+{
+  auto_https off
+}
+
+:80 {
+  log {
+    output discard
+  }
+
+  root * /srv
+  file_server
+
+  rewrite /ip /ip.txt
+  header /ip {
+    Content-Type text/plain
+    Cache-Control "no-cache, no-store, must-revalidate"
+  }
+
+  header /ip.txt {
+    Content-Type text/plain
+    Cache-Control "no-cache, no-store, must-revalidate"
+  }
+
+  header /ip.json {
+    Content-Type application/json
+    Cache-Control "no-cache, no-store, must-revalidate"
+  }
+
+  header /ip.jsonp {
+    Content-Type application/javascript
+    Cache-Control "no-cache, no-store, must-revalidate"
+  }
+
+  header /ip.xml {
+    Content-Type application/xml
+    Cache-Control "no-cache, no-store, must-revalidate"
+  }
+
+  header /ip.yaml {
+    Content-Type application/x-yaml
+    Cache-Control "no-cache, no-store, must-revalidate"
+  }
+
+  header /ip.edn {
+    Content-Type application/edn
+    Cache-Control "no-cache, no-store, must-revalidate"
+  }
+
+  header /ip.dson {
+    Content-Type application/x-dson
+    Cache-Control "no-cache, no-store, must-revalidate"
+  }
+
+  templates /ip.* {
+    mime text/plain application/json application/javascript application/xml application/x-yaml application/edn application/x-dson
+  }
+
+  encode zstd gzip
+}
