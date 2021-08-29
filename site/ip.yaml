@@ -1,2 +1,2 @@
 ---
-ip: "{{.Req.Header.Get "CF-Connecting-IP"}}"
+ip: "{{.Req.Header.Get "X-Real-Ip"}}"

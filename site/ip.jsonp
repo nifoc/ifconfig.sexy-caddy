@@ -1,1 +1,1 @@
-{{.Req.URL.Query.Get "cb" | default "ifconfig"}}({"ip":"{{.Req.Header.Get "CF-Connecting-IP"}}"});
+{{.Req.URL.Query.Get "cb" | default "ifconfig"}}({"ip":"{{.Req.Header.Get "X-Real-Ip"}}"});

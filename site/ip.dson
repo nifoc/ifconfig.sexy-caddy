@@ -1,1 +1,1 @@
-such "ip" is "{{.Req.Header.Get "CF-Connecting-IP"}}" wow
+such "ip" is "{{.Req.Header.Get "X-Real-Ip"}}" wow
